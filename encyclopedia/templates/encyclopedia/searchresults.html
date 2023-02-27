@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Filtered titles</h1>
+    
+
+    <ul>
+        {% for entry in filtered_titles %}
+            <li><a href="{% url 'encyclopedia:entry' title=entry %}">{{ entry }}</a></li> 
+            <!-- title=entry because title is the var we declared in urls.py: <str:title>" 
+            That way is how we pass the title to entry.html
+            we use encyclopedia:entry because "entry" is the name we declared:  path("wiki/<str:title>", views.entry, name="entry")    
+            -->
+        {% endfor %}
+    </ul>
+
+{% endblock %}
